@@ -1,5 +1,11 @@
-import React from "react";
-import { Container, Title, Form } from "./styles";
+import React, { useEffect } from "react";
+import {
+  Container,
+  Title,
+  Form,
+  TroublesSelected,
+  TroubleItem,
+} from "./styles";
 import Selects from "../Selects";
 
 export default function CreateHandbook() {
@@ -27,6 +33,16 @@ export default function CreateHandbook() {
     getData();
   }, []);
 
+  function handleSetTroube(handledDrouble) {
+    setTroubles((state) => {
+      return state.filter((trouble) => handledDrouble !== trouble);
+    });
+  }
+
+  useEffect(() => {
+    console.log(troubles);
+  }, [troubles]);
+
   return (
     <Container>
       <Title>Anamnese</Title>
@@ -44,6 +60,18 @@ export default function CreateHandbook() {
           troubles={troubles}
           setValue={setTroubles}
         />
+        <p>Selecionados:</p>
+        <TroublesSelected>
+          {troubles &&
+            troubles.map((trouble, index) => (
+              <TroubleItem key={index}>
+                <p>{troubleData[trouble - 1].label}</p>
+                <li value={index} onClick={(e) => handleSetTroube(trouble)}>
+                  ✖
+                </li>
+              </TroubleItem>
+            ))}
+        </TroublesSelected>
       </Form>
     </Container>
   );

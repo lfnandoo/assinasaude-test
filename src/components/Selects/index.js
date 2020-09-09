@@ -41,7 +41,11 @@ export default function Selects({
           Selecione...
         </Option>
         {data.map((children) => (
-          <Option key={children.id} value={children.id}>
+          <Option
+            key={children.id}
+            value={children.id}
+            className={children.label}
+          >
             {children.label}
           </Option>
         ))}

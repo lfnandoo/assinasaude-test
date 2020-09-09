@@ -17,3 +17,28 @@ export const Title = styled.h1`
 export const Form = styled.form`
   margin: 10px;
 `;
+
+export const TroublesSelected = styled.div`
+  display: flex;
+`;
+
+export const TroubleItem = styled.div`
+  display: flex;
+  color: #333;
+  background-color: var(--color-blue-light);
+  border-radius: 10px;
+  padding: 3px 10px;
+  align-items: center;
+  margin-top: 8px;
+  margin-right: 5px;
+
+  > p,
+  li {
+    font-weight: 600;
+    color: #333;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    margin-right: 2px;
+  }
+`;
