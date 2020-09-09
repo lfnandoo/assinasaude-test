@@ -44,6 +44,11 @@ textarea {
   color: #333;
   font-weight: 400;
 }
+
+select {
+  outline: none;
+}
+
 @media (min-width: 700px) {
   #root {
     font-size: 62.5%;

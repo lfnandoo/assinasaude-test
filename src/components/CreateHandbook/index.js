@@ -6,6 +6,8 @@ export default function CreateHandbook() {
   const url = "http://localhost:3001";
   const [complaintData, setComplaintData] = React.useState([]);
   const [troubleData, setTroubleData] = React.useState([]);
+  const [complaint, setComplaint] = React.useState(true);
+  const [troubles, setTroubles] = React.useState([]);
 
   React.useEffect(() => {
     async function getData() {
@@ -33,8 +35,15 @@ export default function CreateHandbook() {
           data={complaintData}
           label="Queixa Principal"
           requiredTrue="required"
+          valueId={complaint}
+          setValue={setComplaint}
         />
-        <Selects data={troubleData} label="Doenças Adulto" />
+        <Selects
+          data={troubleData}
+          label="Doenças Adulto"
+          troubles={troubles}
+          setValue={setTroubles}
+        />
       </Form>
     </Container>
   );
