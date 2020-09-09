@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Title, Form, FormSelect, Select, Option } from "./styles";
+import { Container, Title, Form } from "./styles";
+import Selects from "../Selects";
 
 export default function CreateHandbook() {
-  const url = "http://localhost:3000";
+  const url = "http://localhost:3001";
   const [complaintData, setComplaintData] = React.useState([]);
   const [troubleData, setTroubleData] = React.useState([]);
 
@@ -28,32 +29,12 @@ export default function CreateHandbook() {
     <Container>
       <Title>Anamnese</Title>
       <Form>
-        <FormSelect>
-          <label>Queixa Principal</label>
-          <Select required>
-            <Option selected disabled>
-              Selecione...
-            </Option>
-            {complaintData.map((complaint) => (
-              <Option key={complaint.id} value={complaint.id} value="">
-                {complaint.label}
-              </Option>
-            ))}
-          </Select>
-        </FormSelect>
-        <FormSelect>
-          <label>Doenças Adulto</label>
-          <Select>
-            <Option selected disabled value="">
-              Selecione...
-            </Option>
-            {troubleData.map((trouble) => (
-              <Option key={trouble.id} value={trouble.id}>
-                {trouble.label}
-              </Option>
-            ))}
-          </Select>
-        </FormSelect>
+        <Selects
+          data={complaintData}
+          label="Queixa Principal"
+          requiredTrue="required"
+        />
+        <Selects data={troubleData} label="Doenças Adulto" />
       </Form>
     </Container>
   );
