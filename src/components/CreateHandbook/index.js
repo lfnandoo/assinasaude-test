@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Container,
   Title,
@@ -33,15 +33,11 @@ export default function CreateHandbook() {
     getData();
   }, []);
 
-  function handleSetTroube(handledDrouble) {
+  function handleSetTrouble(handledTrouble) {
     setTroubles((state) => {
-      return state.filter((trouble) => handledDrouble !== trouble);
+      return state.filter((trouble) => handledTrouble !== trouble);
     });
   }
-
-  useEffect(() => {
-    console.log(troubles);
-  }, [troubles]);
 
   return (
     <Container>
@@ -66,9 +62,7 @@ export default function CreateHandbook() {
             troubles.map((trouble, index) => (
               <TroubleItem key={index}>
                 <p>{troubleData[trouble - 1].label}</p>
-                <li value={index} onClick={(e) => handleSetTroube(trouble)}>
-                  ✖
-                </li>
+                <li onClick={() => handleSetTrouble(trouble)}>✖</li>
               </TroubleItem>
             ))}
         </TroublesSelected>

@@ -9,6 +9,14 @@ export default function Selects({
   troubles,
   setValue,
 }) {
+  function handleSetTrouble(target) {
+    if (troubles.includes(target.value)) {
+      return;
+    } else {
+      setValue([...troubles, target.value]);
+    }
+  }
+
   if (valueId) {
     return (
       <Container>
@@ -33,10 +41,7 @@ export default function Selects({
   return (
     <Container>
       <label>{label}</label>
-      <Select
-        value=""
-        onChange={({ target }) => setValue([...troubles, target.value])}
-      >
+      <Select value="" onChange={({ target }) => handleSetTrouble(target)}>
         <Option disabled value="">
           Selecione...
         </Option>

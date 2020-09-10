@@ -40,5 +40,6 @@ export const TroubleItem = styled.div`
     outline: none;
     border: 0;
     margin-right: 2px;
+    list-style: none;
   }
 `;
