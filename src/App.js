@@ -5,12 +5,18 @@ import Home from "./components/Home";
 import CreateHandbook from "./components/CreateHandbook";
 
 function App() {
+  const [postData, setPostData] = React.useState([]);
+
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/criar" component={CreateHandbook} />
+        <Route exact path="/">
+          <Home postData={postData} />
+        </Route>
+        <Route exact path="/criar">
+          <CreateHandbook postData={postData} setPostData={setPostData} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

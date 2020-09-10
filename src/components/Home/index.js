@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Charts from "../Charts";
 
 import { Container } from "./styles";
 
-function Home() {
+function Home({ postData }) {
   return (
     <Container>
-      <p>Nenhum prontuário cadastrado.</p>
+      {postData[0] ? <Charts postData={postData} /> : <p>Nenhum prontuário cadastrado.</p>}
       <Link to="/criar">Adicionar novo prontuário</Link>
     </Container>
   );

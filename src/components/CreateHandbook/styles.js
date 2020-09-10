@@ -71,3 +71,19 @@ export const FormButton = styled.button`
   color: #fff;
   font-size: 1rem;
 `;
+
+export const Loader = styled.div`
+margin-left: 29vw;
+margin-top: 8vh;
+  border: 16px solid var(--color-blue-light);
+  border-top: 16px solid var(--color-blue-font);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+`;
