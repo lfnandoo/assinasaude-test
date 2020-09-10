@@ -10,7 +10,7 @@ export const Container = styled.div`
   a {
     display: inherit;
     text-align: center;
-    width: 80%;
+    width: 98%;
     margin: auto auto;
     margin-top: 10px;
     padding: 15px 30px;

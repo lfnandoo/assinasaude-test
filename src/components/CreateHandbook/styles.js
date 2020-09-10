@@ -16,6 +16,19 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
   margin: 10px;
+
+  > textarea {
+    resize: none;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    color: #999;
+    padding: 10px;
+    width: 100%;
+    height: 30vh;
+    margin-top: 5px;
+  }
 `;
 
 export const TroublesSelected = styled.div`
@@ -31,6 +44,7 @@ export const TroubleItem = styled.div`
   align-items: center;
   margin-top: 8px;
   margin-right: 5px;
+  max-width: 40%;
 
   > p,
   li {

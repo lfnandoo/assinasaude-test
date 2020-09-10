@@ -14,6 +14,7 @@ export default function CreateHandbook() {
   const [troubleData, setTroubleData] = React.useState([]);
   const [complaint, setComplaint] = React.useState(true);
   const [troubles, setTroubles] = React.useState([]);
+  const [history, setHistory] = React.useState("");
 
   React.useEffect(() => {
     async function getData() {
@@ -56,7 +57,16 @@ export default function CreateHandbook() {
           troubles={troubles}
           setValue={setTroubles}
         />
-        <p>Selecionados:</p>
+        <div>
+          Selecionados:
+          {!troubles[0] && (
+            <TroubleItem
+              style={{ backgroundColor: "darksalmon", color: "#FFF" }}
+            >
+              Nenhuma doença selecionada.
+            </TroubleItem>
+          )}
+        </div>
         <TroublesSelected>
           {troubles &&
             troubles.map((trouble, index) => (
@@ -66,6 +76,16 @@ export default function CreateHandbook() {
               </TroubleItem>
             ))}
         </TroublesSelected>
+        <p style={{ fontWeight: "600", marginTop: "10px" }}>
+          Historico da Moléstia
+        </p>
+        <textarea
+          placeholder="Digite..."
+          minLength="10"
+          maxLength="1000"
+          required
+          onChange={({ target }) => setHistory(target.value)}
+        ></textarea>
       </Form>
     </Container>
   );

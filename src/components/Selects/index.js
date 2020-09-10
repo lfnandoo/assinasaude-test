@@ -4,7 +4,7 @@ import { Container, Select, Option } from "./styles";
 export default function Selects({
   data,
   label,
-  requiredTrue,
+  isRequired,
   valueId,
   troubles,
   setValue,
@@ -23,7 +23,7 @@ export default function Selects({
         <label>{label}</label>
         <Select
           defaultValue=""
-          requiredTrue
+          isRequired
           onChange={({ target }) => setValue(target.value)}
         >
           <Option disabled value="">
