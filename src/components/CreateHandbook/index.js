@@ -5,6 +5,7 @@ import {
   Form,
   TroublesSelected,
   TroubleItem,
+  FormButton,
 } from "./styles";
 import Selects from "../Selects";
 
@@ -48,7 +49,7 @@ export default function CreateHandbook() {
           data={complaintData}
           label="Queixa Principal"
           requiredTrue="required"
-          valueId={complaint}
+          complaintValue={complaint}
           setValue={setComplaint}
         />
         <Selects
@@ -61,7 +62,11 @@ export default function CreateHandbook() {
           Selecionados:
           {!troubles[0] && (
             <TroubleItem
-              style={{ backgroundColor: "darksalmon", color: "#FFF" }}
+              style={{
+                backgroundColor: "darksalmon",
+                color: "#FFF",
+                justifyContent: "center",
+              }}
             >
               Nenhuma doença selecionada.
             </TroubleItem>
@@ -86,6 +91,7 @@ export default function CreateHandbook() {
           required
           onChange={({ target }) => setHistory(target.value)}
         ></textarea>
+        <FormButton>Salvar</FormButton>
       </Form>
     </Container>
   );

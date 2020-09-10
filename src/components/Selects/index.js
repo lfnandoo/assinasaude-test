@@ -5,7 +5,7 @@ export default function Selects({
   data,
   label,
   isRequired,
-  valueId,
+  complaintValue,
   troubles,
   setValue,
 }) {
@@ -17,7 +17,7 @@ export default function Selects({
     }
   }
 
-  if (valueId) {
+  if (complaintValue) {
     return (
       <Container>
         <label>{label}</label>
@@ -46,11 +46,7 @@ export default function Selects({
           Selecione...
         </Option>
         {data.map((children) => (
-          <Option
-            key={children.id}
-            value={children.id}
-            className={children.label}
-          >
+          <Option key={children.id} value={children.id}>
             {children.label}
           </Option>
         ))}

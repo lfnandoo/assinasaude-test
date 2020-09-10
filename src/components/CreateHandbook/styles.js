@@ -57,3 +57,17 @@ export const TroubleItem = styled.div`
     list-style: none;
   }
 `;
+
+export const FormButton = styled.button`
+  display: inherit;
+  text-align: center;
+  width: 100%;
+  margin: auto auto;
+  margin-top: 10px;
+  padding: 15px 30px;
+  background-color: var(--color-main);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+`;
