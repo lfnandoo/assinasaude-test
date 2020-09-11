@@ -6,17 +6,20 @@ import {
   TroublesSelected,
   TroubleItem,
   FormButton,
-  Loader
+  Loader,
 } from "./styles";
 import Selects from "../Selects";
 
+import { useHistory } from "react-router-dom";
+
 export default function CreateHandbook({ postData, setPostData }) {
   const url = "https://assina-prontuario.herokuapp.com";
+  const PageHistory = useHistory();
   const [complaintData, setComplaintData] = React.useState([]);
   const [troubleData, setTroubleData] = React.useState([]);
   const [complaint, setComplaint] = React.useState(true);
   const [troubles, setTroubles] = React.useState([]);
-  const [history, setHistory] = React.useState("");
+  const [history, setHistory] = React.useState([]);
 
   React.useEffect(() => {
     async function getData() {
@@ -44,25 +47,32 @@ export default function CreateHandbook({ postData, setPostData }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const body = {
+      queixa: complaint,
+      doencas: troubles,
+      historico: history,
+    };
     fetch(`${url}/prontuario`, {
-      method: 'post',
-      mode: 'no-cors',
+      method: "POST",
+      mode: "cors",
       headers: {
-        'Content-Type': "application/json"
+        "Content-Type": "application/json",
       },
-      body: {
-        "queixa": complaint,
-        "doencas": troubles,
-        "historico": history
-      },
-    }).then((response) => {
-      console.log(response);
-      return setPostData([...postData, {
-        "queixa": complaint,
-        "doencas": troubles,
-        "historico": history
-      }])
-    });
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        setPostData([
+          ...postData,
+          {
+            queixa: res.queixa,
+            doencas: res.doencas,
+            historico: res.historico,
+            date: res.created_at,
+          },
+        ]);
+      });
+    return PageHistory.push("/");
   }
 
   if (complaintData[0]) {
@@ -73,7 +83,6 @@ export default function CreateHandbook({ postData, setPostData }) {
           <Selects
             data={complaintData}
             label="Queixa Principal"
-            requiredTrue="required"
             complaintValue={complaint}
             setValue={setComplaint}
           />
@@ -85,7 +94,7 @@ export default function CreateHandbook({ postData, setPostData }) {
           />
           <div>
             Selecionados:
-          {!troubles[0] && (
+            {!troubles[0] && (
               <TroubleItem
                 style={{
                   backgroundColor: "darksalmon",
@@ -108,7 +117,7 @@ export default function CreateHandbook({ postData, setPostData }) {
           </TroublesSelected>
           <p style={{ fontWeight: "600", marginTop: "10px" }}>
             Historico da Moléstia
-        </p>
+          </p>
           <textarea
             placeholder="Digite..."
             minLength="10"
@@ -119,8 +128,8 @@ export default function CreateHandbook({ postData, setPostData }) {
           <FormButton>Salvar</FormButton>
         </Form>
       </Container>
-    )
+    );
   } else {
-    return <Loader />
+    return <Loader />;
   }
 }

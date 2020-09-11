@@ -23,7 +23,7 @@ export default function Selects({
         <label>{label}</label>
         <Select
           defaultValue=""
-          isRequired
+          required
           onChange={({ target }) => setValue(target.value)}
         >
           <Option disabled value="">

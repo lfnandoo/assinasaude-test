@@ -15,7 +15,7 @@ export const Select = styled.select`
   padding: 10px;
   border: 0;
   border-radius: 5px;
-  background-color: #e2e2de;
+  background-color: #fff;
   color: #999;
 `;
 

@@ -3,6 +3,17 @@ import styled from "styled-components";
 export const Container = styled.div`
   font-size: 0.8rem;
   margin-top: 20px;
+  background-color: #f2f2f2;
+
+  @media (min-width: 768px) {
+    max-width: 80%;
+    margin: 10px auto;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 60%;
+    margin: 10px auto;
+  }
 `;
 
 export const Title = styled.h1`
@@ -22,7 +33,7 @@ export const Form = styled.form`
     outline: none;
     border: 0;
     border-radius: 5px;
-    background-color: #e2e2e2;
+    background-color: #fff;
     color: #999;
     padding: 10px;
     width: 100%;
@@ -33,6 +44,7 @@ export const Form = styled.form`
 
 export const TroublesSelected = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const TroubleItem = styled.div`
@@ -73,8 +85,8 @@ export const FormButton = styled.button`
 `;
 
 export const Loader = styled.div`
-margin-left: 29vw;
-margin-top: 8vh;
+  margin-left: 29vw;
+  margin-top: 8vh;
   border: 16px solid var(--color-blue-light);
   border-top: 16px solid var(--color-blue-font);
   border-radius: 50%;
@@ -82,8 +94,16 @@ margin-top: 8vh;
   height: 120px;
   animation: spin 2s linear infinite;
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 40vw;
+  }
 `;

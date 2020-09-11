@@ -28,7 +28,7 @@ body {
 
 body {
   background: var(--color-background);
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 a {
