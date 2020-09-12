@@ -21,7 +21,30 @@ Project made with:
 - Styled-Components
 - React-router-dom
 
-## 💻 Test
+## 📌 Run
+
+For run this project you nedded Git, Node.js and Yarn/Npm =)
+```bash
+## Clone repository
+$ git clone https://github.com/lfnandoo/assinasaude-test
+
+## Enter in repository
+$ cd assinasaude-test
+
+## Install dependences
+$ yarn install
+## or
+$ npm install
+
+## Start dev server
+$ yarn start
+## or
+$ npm start
+
+## Wait some seconds.
+```
+
+## 💻 Project
 
 Test made for apply to AssinaSaude work's.
 
